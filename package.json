@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Primitive caching proxy server (http.cat) — Lab 5",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "start": "node index.js --host 127.0.0.1 --port 3000 --cache ./cache",
     "dev": "nodemon index.js -- --host 127.0.0.1 --port 3000 --cache ./cache"
