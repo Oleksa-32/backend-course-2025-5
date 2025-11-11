@@ -1,0 +1,24 @@
+# PUT create
+curl -s https://http.cat/200 -o 200.jpg
+curl -i -X PUT --data-binary "@200.jpg" http://127.0.0.1:3000/200
+
+# GET from cache
+curl -i http://127.0.0.1:3000/200 -o out.jpg
+
+# DELETE
+curl -i -X DELETE http://127.0.0.1:3000/200
+
+# GET missing => 404 (поки що)
+curl -i http://127.0.0.1:3000/200
+
+
+
+-----
+
+rm -f cache/404.jpg
+
+# перший GET забере з http.cat, збереже у кеш і поверне 200 image/jpeg
+curl -i http://127.0.0.1:3000/404 -o 404a.jpg
+
+# другий GET піде з кешу (швидше, без зовнішнього трафіку)
+curl -i http://127.0.0.1:3000/404 -o 404b.jpg
